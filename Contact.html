@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="Contact.css">
+</head>
+
+<body>
+  <div class="hero-section">
+    <div class="button-container">
+      <button class="hero-button" onclick="location.href='index.html'">Home</button>
+      <button class="hero-button" onclick="location.href='Projects.html'">Projects</button>
+      <button class="hero-button" onclick="location.href='Aboutme.html'">About me</button>
+      <button class="hero-button active" onclick="location.href='Contact.html'">Contact</button>
+    </div>
+    </div>
+
+    <div class="main-container">
+    
+    
+      <div class="white-box">
+  <h2 class="box-title">Contact Us</h2>
+  <h4 class="box-subtext">Feel free to contact us if you need any assistance. Any help or another question</h4>
+  <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted!');">
+    <div class="input-with-menu">
+      <input type="text" placeholder="Your Name" id="name" autocomplete="off" required>
+      <button type="button" class="dots-btn" aria-label="Show name options">•••</button>
+      <ul class="name-options" id="name-options">
+        <li>John</li>
+        <li>Emily</li>
+        <li>Michael</li>
+        <li>Sarah</li>
+        <li>David</li>
+      </ul>
+    </div>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit" class="send-button">Send</button>
+  </form>
+</div>
+</div>
+<script>
+  const dotsBtn = document.querySelector('.dots-btn');
+  const nameOptions = document.getElementById('name-options');
+  const nameInput = document.getElementById('name');
+
+  dotsBtn.addEventListener('click', () => {
+    if (nameOptions.style.display === 'block') {
+      nameOptions.style.display = 'none';
+    } else {
+      nameOptions.style.display = 'block';
+    }
+  });
+
+  nameOptions.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+      nameInput.value = e.target.textContent;
+      nameOptions.style.display = 'none';
+    }
+  });
+
+  // Close dropdown if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!dotsBtn.contains(e.target) && !nameOptions.contains(e.target)) {
+      nameOptions.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
